@@ -1,0 +1,33 @@
+<div>
+  <table class mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="currencyName">
+      <th mat-header-cell *matHeaderCellDef>Currency</th>
+      <td mat-cell *matCellDef="let currencyRate">
+        {{ currencyRate.currencyName }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="currencyAbbreviation">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let currencyRate">
+        {{ currencyRate.currencyAbbreviation }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="rate">
+      <th mat-header-cell *matHeaderCellDef>Rate</th>
+      <td mat-cell *matCellDef="let currencyRate">
+        {{ (1 / currencyRate.rate).toFixed(2) }} $
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let currencyRate">{{ currencyRate.date }}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let currencyRate; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    [length]="currencyRatesLength$ | async"
+    [pageSize]="10"
+    [pageSizeOptions]="[10, 20, 30]"
+  ></mat-paginator>
+</div>

@@ -1,0 +1,9 @@
+::ng-deep .mat-grid-tile  {
+   .mat-grid-tile-content {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start !important;
+      height: 100%;
+      padding-top:10px;
+   }
+ }
